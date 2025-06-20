@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordMania.API", "src\RecordMania.API\RecordMania.API.csproj", "{E130E7F7-FAF1-4C18-9426-4C95D58B6608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordMania.Application", "src\RecordMania.Application\RecordMania.Application.csproj", "{1A0447B1-6B22-4001-A03C-23433F23B7D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordMania.Repositories", "src\RecordMania.Repositories\RecordMania.Repositories.csproj", "{59483F79-F0E0-409E-80AB-03A0507DF5D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordMania.Models", "src\RecordMania.Models\RecordMania.Models.csproj", "{C267BFD2-79A6-4BB2-B04F-FAD3618B2B9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E130E7F7-FAF1-4C18-9426-4C95D58B6608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E130E7F7-FAF1-4C18-9426-4C95D58B6608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E130E7F7-FAF1-4C18-9426-4C95D58B6608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E130E7F7-FAF1-4C18-9426-4C95D58B6608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A0447B1-6B22-4001-A03C-23433F23B7D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0447B1-6B22-4001-A03C-23433F23B7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A0447B1-6B22-4001-A03C-23433F23B7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A0447B1-6B22-4001-A03C-23433F23B7D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59483F79-F0E0-409E-80AB-03A0507DF5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59483F79-F0E0-409E-80AB-03A0507DF5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59483F79-F0E0-409E-80AB-03A0507DF5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59483F79-F0E0-409E-80AB-03A0507DF5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C267BFD2-79A6-4BB2-B04F-FAD3618B2B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C267BFD2-79A6-4BB2-B04F-FAD3618B2B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C267BFD2-79A6-4BB2-B04F-FAD3618B2B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C267BFD2-79A6-4BB2-B04F-FAD3618B2B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
