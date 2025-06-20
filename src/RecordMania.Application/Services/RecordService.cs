@@ -93,7 +93,8 @@ public class RecordService : IRecordService
             if (task.RequiredLevel != null && teacher.Level < task.RequiredLevel)
             throw new LimitException("Teacher can't access this task");
             if (createRecordDto.ExecutionTime >= task.MinRequiredTime)
-                throw new ArgumentException("Execution time is too big");
+            if (task.MinRequiredTime != null && createRecordDto.ExecutionTime > task.MinRequiredTime)
+                throw new LimitException("Execution time is too big");
         }
 
         // check execution time

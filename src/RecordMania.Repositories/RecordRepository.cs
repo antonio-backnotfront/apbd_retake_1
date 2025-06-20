@@ -76,7 +76,7 @@ public class RecordRepository : IRecordRepository
             task.Id = reader.GetInt32(0);
             task.Name = reader.GetString(1);
             task.Description = reader.GetString(2);
-            task.RequiredLevel = reader.GetInt32(3);
+            task.RequiredLevel = reader.IsDBNull(3) ? null : reader.GetInt32(3);
             task.MinRequiredTime = reader.IsDBNull(4) ? null : reader.GetDecimal(4);
             return task;
         }
@@ -199,8 +199,12 @@ public class RecordRepository : IRecordRepository
 
             taskCommand.Parameters.AddWithValue("@Name", dto.Task.Name);
             taskCommand.Parameters.AddWithValue("@Description", dto.Task.Description);
-            taskCommand.Parameters.AddWithValue("@RequiredLevel", dto.Task.RequiredLevel == null ? null : dto.Task.RequiredLevel);
-            taskCommand.Parameters.AddWithValue("@MinRequiredTime", dto.Task.MinRequiredTime == null ? null : dto.Task.MinRequiredTime);
+            taskCommand.Parameters.AddWithValue("@RequiredLevel", 
+                dto.Task.RequiredLevel.HasValue ? dto.Task.RequiredLevel.Value : DBNull.Value);
+
+            taskCommand.Parameters.AddWithValue("@MinRequiredTime", 
+                dto.Task.MinRequiredTime ?? (object)DBNull.Value);
+
             var taskId = (int?)await taskCommand.ExecuteScalarAsync(cancellationToken);
             if (taskId == null) throw new Exception("Couldn't insert and retrieve new id");
             
