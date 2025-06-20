@@ -160,13 +160,14 @@ public class RecordRepository : IRecordRepository
         try
         {
             var recordCommand = new SqlCommand(recordQuery, connection, transaction);
-
             recordCommand.Parameters.AddWithValue("@TeacherId", dto.TeacherId);
             recordCommand.Parameters.AddWithValue("@RecordTypeId", dto.RecordTypeId);
             recordCommand.Parameters.AddWithValue("@TaskId", dto.Task.Id);
             recordCommand.Parameters.AddWithValue("@ExecutionTime", dto.ExecutionTime);
             recordCommand.Parameters.AddWithValue("@CreatedAt", dto.CreatedAt);
             var id = (int?)await recordCommand.ExecuteScalarAsync(cancellationToken);
+            Console.WriteLine("hello");
+            Console.WriteLine($"{id}");
             if (id == null) throw new Exception("Couldn't insert and retrieve new id");
             await transaction.CommitAsync(cancellationToken);
             return id.Value;

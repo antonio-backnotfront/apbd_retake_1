@@ -88,18 +88,21 @@ public class RecordService : IRecordService
             throw new NotExistsException($"Task {createRecordDto.Task.Id} not found");
         
         // check required level
-        if (task.RequiredLevel != null && teacher.Level < task.RequiredLevel)
-        throw new LimitException("Teacher can't access this task");
+        if (task != null)
+        {
+            if (task.RequiredLevel != null && teacher.Level < task.RequiredLevel)
+            throw new LimitException("Teacher can't access this task");
+            if (createRecordDto.ExecutionTime >= task.MinRequiredTime)
+                throw new ArgumentException("Execution time is too big");
+        }
 
         // check execution time
-        if (createRecordDto.ExecutionTime > task.MinRequiredTime)
-            throw new ArgumentException("Execution time is too big");
 
         if (task == null)
         {
             return new CreateRecordDto()
             {
-                Id = await _repository.CreateRecordAsync(createRecordDto, cancellationToken),
+                Id = await _repository.CreateRecordWithTaskAsync(createRecordDto, cancellationToken),
                 CreatedAt = createRecordDto.CreatedAt,
                 ExecutionTime = createRecordDto.ExecutionTime,
                 RecordTypeId = recordType.Id,
@@ -108,6 +111,7 @@ public class RecordService : IRecordService
             };
         }
 
+        Console.WriteLine($"hello");
         return new CreateRecordDto()
         {
             Id = await _repository.CreateRecordAsync(createRecordDto, cancellationToken),

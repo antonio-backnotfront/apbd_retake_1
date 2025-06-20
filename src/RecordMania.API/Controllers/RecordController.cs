@@ -39,9 +39,9 @@ public class RecordController : ControllerBase
         {
             CreateRecordDto? returnDto = await _service.CreateRecordAsync(dto, cancellationToken);
             if (returnDto == null) return Problem();
-            return CreatedAtAction("getAllRecords", new { Id = returnDto.Id }, returnDto);
+            return Ok(returnDto);
         }
-        catch (ArgumentNullException e)
+        catch (LimitException e)
         {
             return BadRequest(e.Message);
         }
